@@ -1,3 +1,2 @@
-import * as BeerStyles from "./styles.json"
-
-export default BeerStyles
+export * as types from './index';
+export default './styles.json';
