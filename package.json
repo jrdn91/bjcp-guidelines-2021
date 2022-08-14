@@ -1,9 +1,9 @@
 {
   "name": "2021-beer-styles",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Beer styles in JSON format based on the 2021 BJCP style guidelines.",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "types": "lib/types.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "format": "prettier --write \"src/**/*.(js|ts)\"",
