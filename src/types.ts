@@ -9,11 +9,11 @@ export type VitalStatisticsAsObject = {
 };
 
 export type VitalStatistics = {
-  OG: RangeType;
-  IBUs: RangeType;
-  FG: RangeType;
-  SRM: RangeType;
-  ABV: RangeType;
+  OG: RangeType | string;
+  IBUs: RangeType | string;
+  FG: RangeType | string;
+  SRM: RangeType | string;
+  ABV: RangeType | string;
 };
 
 export type VitalStatisticsKeys = 'OG' | 'IBUs' | 'FG' | 'SRM' | 'ABV';
@@ -25,14 +25,15 @@ export type BeerStyleProperties = {
   flavor: string;
   mouthfeel: string;
   comments: string;
-  history: string;
-  characteristicIngredients: string;
-  styleComparison: string;
+  history?: string;
+  characteristicIngredients?: string;
+  styleComparison?: string;
   entryInstructions?: string;
   vitalStatistics: VitalStatistics;
-  specialStatistics?: Array<Partial<VitalStatistics>>;
+  specialStatistics?: Partial<Record<keyof VitalStatistics, Record<string, Array<number>>>>;
+  // specialStatistics?: Partial<Record<keyof VitalStatistics, Array<number>>>;
   commercialExamples: string;
-  tags: string[];
+  tags: string;
   currentlyDefinedTypes?: string;
 };
 
