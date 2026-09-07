@@ -21,15 +21,21 @@
 Beer styles in JSON format based on the 2021 [BJCP](https://www.bjcp.org/) style
 guidelines, published with TypeScript types.
 
-## Install
+The sections below document `2021-beer-styles` as it was last published (`2.1.0`).
+It is **frozen** — no further releases. For new projects use
+[`beer-styles`](https://www.npmjs.com/package/beer-styles) (`beer-styles/2021`
+is the same data); see the migration snippets above.
+
+## Install (legacy)
 
 ```bash
 npm install 2021-beer-styles
+# new projects: npm install beer-styles
 ```
 
 Ships ESM and CommonJS builds plus type declarations. Node.js >= 18.
 
-## Usage
+## Usage (legacy)
 
 ```ts
 import { beerStyles } from '2021-beer-styles';
@@ -73,20 +79,11 @@ See [`src/types.ts`](./src/types.ts) for the full contract.
   `vitalStatistics` holds the combined range and `specialStatistics` holds the
   per-variant numbers.
 
-## Contributing
+## Contributing (moved)
 
-Fixes to style content and types are welcome — open an issue or PR.
-
-```bash
-npm install      # also runs the build via the prepare script
-npm run build    # bundle src/ -> dist/ with tsup (ESM + CJS + d.ts)
-npm test         # tsc --noEmit: also checks src/styles.json against the types
-npm run lint
-npm run format
-```
-
-The data lives in [`src/styles.json`](./src/styles.json) (the single source of
-truth). `src/index.ts` imports it, applies the types, and re-exports.
+This package is closed to new work. Please open issues and PRs against
+[`beer-styles`](https://github.com/jrdn91/beer-styles) instead — including fixes to
+the 2021 data, which lives there at `src/2021/styles.json`.
 
 ## License
 
