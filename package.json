@@ -1,44 +1,80 @@
 {
   "name": "2021-beer-styles",
-  "version": "1.0.3",
-  "description": "Beer styles in JSON format based on the 2021 BJCP style guidelines.",
-  "main": "lib/index.js",
-  "types": "lib/types.d.ts",
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "format": "prettier --write \"src/**/*.(js|ts)\"",
-    "lint": "eslint src --ext .js,.ts",
-    "lint:fix": "eslint src --fix --ext .js,.ts",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm run lint",
-    "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jrdn91/bjcp-guidelines-2021"
-  },
+  "version": "2.0.0",
+  "description": "Beer styles in JSON format based on the 2021 BJCP style guidelines, with TypeScript types.",
   "keywords": [
-    "boilerplate",
+    "bjcp",
+    "beer",
+    "brewing",
+    "homebrew",
+    "beer-styles",
+    "style-guidelines",
+    "2021",
+    "json",
     "typescript"
   ],
   "author": "Jordan Riser",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrdn91/bjcp-guidelines-2021.git"
+  },
+  "homepage": "https://github.com/jrdn91/bjcp-guidelines-2021#readme",
   "bugs": {
     "url": "https://github.com/jrdn91/bjcp-guidelines-2021/issues"
   },
-  "homepage": "https://github.com/jrdn91/bjcp-guidelines-2021#readme",
-  "devDependencies": {
-    "@types/jest": "28.1.6",
-    "@typescript-eslint/eslint-plugin": "5.30.7",
-    "@typescript-eslint/parser": "5.30.7",
-    "eslint": "8.20.0",
-    "eslint-plugin-jest": "26.6.0",
-    "prettier": "2.7.1",
-    "typescript": "4.7.4"
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./styles.json": "./dist/styles.json",
+    "./package.json": "./package.json"
   },
+  "sideEffects": false,
   "files": [
-    "lib/**/*"
-  ]
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "npm run build",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm run lint && npm run test",
+    "preversion": "npm run lint && npm run test",
+    "version": "npm run format && git add -A",
+    "postversion": "git push && git push --tags"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0"
+  }
 }

@@ -1,22 +1,31 @@
+/**
+ * Type definitions for the 2021 BJCP beer style guidelines data set.
+ *
+ * The shipped data (`styles.json`) is an array of {@link BeerCategory}.
+ */
+
+/** An inclusive `[min, max]` numeric range, e.g. an OG or ABV span. */
 export type RangeType = [number, number];
 
-export type VitalStatisticsAsObject = {
-  OG: string;
-  IBUs: string;
-  FG: string;
-  SRM: string;
-  ABV: string;
-};
-
-export type VitalStatistics = {
-  OG: RangeType | string;
-  IBUs: RangeType | string;
-  FG: RangeType | string;
-  SRM: RangeType | string;
-  ABV: RangeType | string;
-};
-
+/** The five vital-statistic keys used by every style. */
 export type VitalStatisticsKeys = 'OG' | 'IBUs' | 'FG' | 'SRM' | 'ABV';
+
+/** Vital statistics rendered as display strings rather than numeric ranges. */
+export type VitalStatisticsAsObject = Record<VitalStatisticsKeys, string>;
+
+/**
+ * Vital statistics for a style. Each value is either a numeric {@link RangeType}
+ * or a free-text string (used when a style has no meaningful numeric range).
+ */
+export type VitalStatistics = Record<VitalStatisticsKeys, RangeType | string>;
+
+/**
+ * Per-variant vital statistics. Only `25B. Saison` uses this today: the BJCP
+ * defines it as a table of strength variants (`table` / `standard` / `super`),
+ * so the shared range lives in {@link BeerStyleProperties.vitalStatistics} and
+ * the per-variant numbers live here.
+ */
+export type SpecialStatistics = Partial<Record<VitalStatisticsKeys, Record<string, number[]>>>;
 
 export type BeerStyleProperties = {
   overallImpression: string;
@@ -30,8 +39,7 @@ export type BeerStyleProperties = {
   styleComparison?: string;
   entryInstructions?: string;
   vitalStatistics: VitalStatistics;
-  specialStatistics?: Partial<Record<keyof VitalStatistics, Record<string, Array<number>>>>;
-  // specialStatistics?: Partial<Record<keyof VitalStatistics, Array<number>>>;
+  specialStatistics?: SpecialStatistics;
   commercialExamples: string;
   tags: string;
   currentlyDefinedTypes?: string;
@@ -48,3 +56,6 @@ export type BeerCategory = {
   description: string;
   styles: BeerStyle[];
 };
+
+/** The full data set: every BJCP 2021 category and its styles. */
+export type BeerStyles = BeerCategory[];
