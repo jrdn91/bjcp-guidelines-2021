@@ -1,6 +1,17 @@
 import styleData from './styles.json';
 import type { BeerStyles } from './types';
 
+// `tsconfig` ships no `lib.dom` / `@types/node`, so declare the one global used.
+declare const console: { warn(...args: unknown[]): void };
+
+// This package has been renamed. The warning fires once on import; `src/index.ts`
+// / `dist/index.*` are the only `sideEffects` entries so bundlers keep it.
+console.warn(
+  "[2021-beer-styles] This package has been renamed to 'beer-styles' and will " +
+    "not receive further updates. Install 'beer-styles' and import from " +
+    "'beer-styles/2021' for identical data: https://www.npmjs.com/package/beer-styles",
+);
+
 export type {
   RangeType,
   VitalStatisticsKeys,

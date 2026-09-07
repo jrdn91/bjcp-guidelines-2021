@@ -1,5 +1,23 @@
 # 2021-beer-styles
 
+> ⚠️ **This package has moved.** `2021-beer-styles` has been renamed to
+> [`beer-styles`](https://www.npmjs.com/package/beer-styles) and will not receive
+> further updates. Install `beer-styles` and import from `beer-styles/2021` for
+> identical data.
+>
+> ```diff
+> - npm install 2021-beer-styles
+> + npm install beer-styles
+> ```
+>
+> ```diff
+> - import { beerStyles } from '2021-beer-styles';
+> + import { beerStyles } from 'beer-styles/2021';
+> ```
+>
+> `beer-styles` versions its data by year: the bare `beer-styles` import tracks
+> the latest guidelines, and `beer-styles/2021` stays pinned to this data.
+
 Beer styles in JSON format based on the 2021 [BJCP](https://www.bjcp.org/) style
 guidelines, published with TypeScript types.
 

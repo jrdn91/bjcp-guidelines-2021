@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Status: deprecated
+
+This package has been renamed to **`beer-styles`** (new repo, year-versioned
+subpath exports; `beer-styles/2021` == this data). This repo/package is now in
+maintenance-only mode: `src/index.ts` emits a `console.warn` on import and the
+README carries a move notice. Only ship changes here for a genuine 2021-data fix;
+new work goes to `beer-styles`. The rename lives on the `beer-styles-migration`
+branch until the new repo is created.
+
 ## What this is
 
 An npm package (`2021-beer-styles`, repo `bjcp-guidelines-2021`) that ships the 2021
