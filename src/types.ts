@@ -1,7 +1,8 @@
 /**
- * Type definitions for the 2021 BJCP beer style guidelines data set.
+ * Type definitions for the BJCP beer style guidelines data set.
  *
- * The shipped data (`styles.json`) is an array of {@link BeerCategory}.
+ * Each year's shipped data (`src/<year>/styles.json`) is an array of
+ * {@link BeerCategory}; {@link BeerStyles} is the top-level alias.
  */
 
 /** An inclusive `[min, max]` numeric range, e.g. an OG or ABV span. */
@@ -57,5 +58,5 @@ export type BeerCategory = {
   styles: BeerStyle[];
 };
 
-/** The full data set: every BJCP 2021 category and its styles. */
+/** A full data set: every category and its styles for one guideline year. */
 export type BeerStyles = BeerCategory[];
